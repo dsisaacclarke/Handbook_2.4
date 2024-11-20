@@ -29,3 +29,13 @@ bool Right(const std::string& password) {
     }
     return capslock + low + num + other >= 3;
 }
+
+int main() {
+    std::string password;
+    std::getline(std::cin, password);
+    if (Right(password)) {
+        std::cout << "YES";
+    } else {
+        std::cout << "NO";
+    }
+}
