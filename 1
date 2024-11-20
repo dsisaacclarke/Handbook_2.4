@@ -1,0 +1,31 @@
+Пароли
+
+#include <iostream>
+#include <string>
+
+bool Right(const std::string& password) {
+    if (password.size() < 8 || password.size() > 14) {
+        return false;
+    }
+
+    int capslock = 0;
+    int low = 0;
+    int num = 0;
+    int other = 0;
+
+    for (char c : password) {
+        if (c < 33 || c > 126) {
+            return false;
+        }
+        if ('A' <= c && c <= 'Z') {
+            capslock = 1;
+        } else if ('a' <= c && c <= 'z') {
+            low = 1;
+        } else if ('0' <= c && c <= '9') {
+            num = 1;
+        } else {
+            other = 1;
+        }
+    }
+    return capslock + low + num + other >= 3;
+}
